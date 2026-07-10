@@ -7,8 +7,8 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Cal
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from dotenv import load_dotenv
 
-from .database import engine, Base
-from .bot import start, set_resume, set_preferences, handle_text, search_command, button_callback
+from .infrastructure.database.connection import engine, Base
+from .infrastructure.telegram.bot import start, set_resume, set_preferences, handle_text, search_command, button_callback
 from .service import run_search_loop
 
 load_dotenv()
