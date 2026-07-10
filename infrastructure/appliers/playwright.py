@@ -1,16 +1,12 @@
-import asyncio
 import logging
-from typing import Any
 from playwright.async_api import async_playwright
-from .matcher import Matcher
+from ...domain.entities import User, UserJob
+from ...domain.interfaces import JobApplier
 
 logger = logging.getLogger(__name__)
 
-class Applier:
-    def __init__(self, matcher: Matcher):
-        self.matcher = matcher
-
-    async def apply_to_job(self, user: Any, user_job: Any):
+class PlaywrightApplier(JobApplier):
+    async def apply_to_job(self, user: User, user_job: UserJob) -> bool:
         """
         Skeleton for automated application using Playwright.
         In a real scenario, this would navigate to the job link and fill the form.

@@ -1,11 +1,11 @@
 import httpx
 import logging
 from typing import List, Dict, Any
-from .models import Job
+from ...domain.interfaces import JobScraper
 
 logger = logging.getLogger(__name__)
 
-class Scraper:
+class RemoteOkScraper(JobScraper):
     async def fetch_remote_ok_jobs(self) -> List[Dict[str, Any]]:
         url = "https://remoteok.com/api"
         # RemoteOK API is a bit peculiar, the first element is a legal notice usually
@@ -22,12 +22,6 @@ class Scraper:
             except Exception as e:
                 logger.error(f"Error fetching from RemoteOK: {e}")
                 return []
-
-    async def fetch_weworkremotely_jobs(self) -> List[Dict[str, Any]]:
-        # WWR doesn't have a simple JSON API for all jobs, usually RSS or scraping
-        # For the blueprint, we'll simulate fetching from a known endpoint or use a placeholder
-        # In a real scenario, we might use a dedicated aggregator API as suggested in the blueprint
-        return []
 
     async def get_all_jobs(self) -> List[Dict[str, Any]]:
         remote_ok = await self.fetch_remote_ok_jobs()

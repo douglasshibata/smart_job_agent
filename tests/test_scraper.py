@@ -1,10 +1,10 @@
 import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
-from smart_job_agent.scraper import Scraper
+from smart_job_agent.infrastructure.scrapers.remote_ok import RemoteOkScraper
 
 @pytest.mark.asyncio
 async def test_scraper_remote_ok():
-    scraper = Scraper()
+    scraper = RemoteOkScraper()
     with patch("httpx.AsyncClient") as mock_client:
         mock_instance = mock_client.return_value.__aenter__.return_value
         mock_resp = MagicMock()
