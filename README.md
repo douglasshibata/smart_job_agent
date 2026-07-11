@@ -51,3 +51,21 @@ Run the test suite:
 export PYTHONPATH=$PYTHONPATH:.
 python3 -m pytest smart_job_agent/tests/
 ```
+
+---
+
+## 🛠️ Project Deep Dive & Technical Guide
+
+### 🎯 Main Purpose
+Telegram bot delivering automated job search, scraping, and CV delivery based on Clean Architecture.
+
+### 🧰 Tecnologias Utilizadas (Tech Stack)
+- **Primary Technologies:** FastAPI, Python 3.12
+- **Deployment Strategy:** Container-ready with standard Docker/Docker Compose integrations where applicable.
+
+### 🚀 Como Implantar e Executar (How to Deploy & Run)
+#### Python Engine / FastAPI
+1. Install dependencies: `pip install -r requirements.txt`.
+2. Run the server/script: `uvicorn main:app --reload` or `python main.py`.
+
+---
