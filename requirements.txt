@@ -1,6 +1,6 @@
 python-telegram-bot==21.10
 sqlalchemy==2.0.38
-fastapi==0.115.11
+fastapi==0.115.8
 httpx==0.28.1
 langchain-google-genai==2.0.10
 apscheduler==3.11.0
