@@ -1,0 +1,16 @@
+services:
+  smart-job-agent:
+    image: python:3.11-slim
+    container_name: smart-job-agent
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN:-}
+      - DATABASE_URL=sqlite:///./jobs.db
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - SEARCH_INTERVAL_HOURS=6
+    command: sh -c "pip install --no-cache-dir -r requirements.txt && python3 main.py"
+    restart: unless-stopped
